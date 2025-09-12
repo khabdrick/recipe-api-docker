@@ -13,7 +13,7 @@ import os
 from contextlib import asynccontextmanager
 
 # Database configuration
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+asyncpg://user:password@localhost/recipedb")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Create async engine
 engine = create_async_engine(DATABASE_URL, echo=True)
