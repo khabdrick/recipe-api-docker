@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   fastapi:
     build:
@@ -39,25 +37,13 @@ services:
       - fastapi_net
     restart: unless-stopped
 
-  certbot:
-    image: certbot/certbot
-    container_name: fastapi_certbot
-    depends_on:
-      - nginx
-    volumes:
-      - certs:/etc/letsencrypt
-      - ./docker/certbot/www:/var/www/certbot
-    entrypoint: >
-      sh -c "trap exit TERM;
-         while :; do
-           certbot renew --webroot -w /var/www/certbot --quiet \
-             --deploy-hook 'docker exec fastapi_nginx nginx -s reload';
-           sleep 12h & wait $${!};
-         done"
-
-volumes:
-  db_data:
-  certs:
+    certbot:
+      image: certbot/certbot
+      container_name: certbot
+      volumes: 
+        - ./certbot/conf:/etc/letsencrypt
+        - ./certbot/www:/var/www/certbot
+      command: certonly --webroot -w /var/www/certbot --force-renewal --email {email} -d {domain} --agree-tos
 
 networks:
   fastapi_net:
