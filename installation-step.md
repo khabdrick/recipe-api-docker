@@ -10,7 +10,6 @@ This guide provides detailed steps to containerize and deploy a FastAPI applicat
 ### Application Development
 [ ] Build async FastAPI application with database connection pooling  
 [ ] Configure async database models and connection settings  
-[ ] Set up environment variables for database credentials and app configuration  
 [ ] Create database migration scripts or initialization files  
 
 ### Docker Configuration
@@ -32,6 +31,7 @@ This guide provides detailed steps to containerize and deploy a FastAPI applicat
 [ ] Configure security headers and HTTPS redirects  
 
 ### Deployment & Testing
+[ ] Set up environment variables for database credentials and app configuration  
 [ ] Build and run containers using docker-compose  
 [ ] Test database connectivity and async operations  
 [ ] Verify HTTPS configuration and certificate validity  
